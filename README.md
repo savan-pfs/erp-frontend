@@ -1,73 +1,57 @@
-# Welcome to your Lovable project
+# ERP Frontend
 
-## Project info
+Frontend application for the Passion Farms ERP system — a cultivation and operations management platform.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## About This Project
 
-## How can I edit this code?
+This is the web client for an enterprise resource planning (ERP) system built for cannabis cultivation and related operations. It provides:
 
-There are several ways of editing your application.
+- **Dashboard & analytics** — Real-time stats, alerts, batches, compliance, and environment widgets
+- **Cultivation management** — Batches, plants, mother plants, rooms, facilities, feeding, harvest, and IPM
+- **Inventory & manufacturing** — Inventory tracking, waste management, quality control, and manufacturing workflows
+- **Compliance & audit** — Document verification, audit logs, SOPs, and compliance reporting
+- **Organization & access** — Multi-organization support, role-based permissions, team management, and user administration
+- **Integrations** — Supabase for auth and data, configurable API backend
 
-**Use Lovable**
+The app uses **React**, **TypeScript**, **Vite**, **Tailwind CSS**, and **shadcn/ui**, with Supabase for authentication and an optional REST API backend.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Vite** — Build tool and dev server
+- **TypeScript** — Type-safe JavaScript
+- **React** — UI framework
+- **Tailwind CSS** — Styling
+- **shadcn/ui** — Component library
+- **Supabase** — Authentication and optional data layer
 
-**Use your preferred IDE**
+## Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+**Requirements:** Node.js and npm (or [nvm](https://github.com/nvm-sh/nvm#installing-and-updating))
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone the repository
+git clone https://github.com/savan-pfs/erp-frontend.git
+cd erp-frontend
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Install dependencies
+npm install
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Copy environment template and add your values
+cp .env.example .env
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Configure `.env` with your Supabase project ID, URL, anon key, and API URL (see `.env.example`).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Repository
 
-**Use GitHub Codespaces**
+**URL:** https://github.com/savan-pfs/erp-frontend
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Scripts
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- `npm run dev` — Start dev server with hot reload
+- `npm run build` — Production build
+- `npm run preview` — Preview production build locally
+- `npm run lint` — Run ESLint
