@@ -88,48 +88,35 @@ const Waste = () => {
 
   // Facility logic removed
 
-  // Create waste record
+  // Create waste record via backend API
   const createWaste = useMutation({
     mutationFn: async (wasteData: typeof newWaste) => {
-      const data = getData();
-      const profile = data.profiles.find(p => p.user_id === user?.id);
-      const organizationId = profile?.organization_id || data.organizations[0]?.id;
-
-      if (!organizationId) {
-        throw new Error('No organization found');
+      if (!wasteData.waste_type || !wasteData.reason || !wasteData.weight_lbs) {
+        throw new Error('Waste type, reason, and weight are required');
       }
-
-      const newRecord = {
-        id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
-        waste_type: wasteData.waste_type as WasteType,
-        source_type: wasteData.source_type,
-        weight_lbs: parseFloat(wasteData.weight_lbs),
+      const quantity = parseFloat(String(wasteData.weight_lbs));
+      if (isNaN(quantity) || quantity <= 0) {
+        throw new Error('Please enter a valid weight');
+      }
+      const payload = {
+        wasteType: wasteData.waste_type,
         reason: wasteData.reason,
-        disposal_method: wasteData.disposal_method || null,
-        notes: wasteData.notes || null,
-        organization_id: organizationId,
-        recorded_by: user?.id,
-        waste_date: new Date().toISOString().split('T')[0],
-        created_at: new Date().toISOString(),
+        quantity,
+        unit: 'lbs' as const,
+        disposalMethod: wasteData.disposal_method || undefined,
+        complianceNotes: wasteData.notes || undefined,
       };
-
-      data.waste_records.push(newRecord);
-      staticData.set(data);
-      return [newRecord];
+      return wasteManagementApi.create(payload);
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['waste-logs'] });
       setIsDialogOpen(false);
       setNewWaste({
-        roomId: '',
-        batchId: '',
-        harvestBatchId: '',
         waste_type: '',
+        source_type: '',
+        weight_lbs: '',
         reason: '',
-        quantity: '',
-        unit: 'g',
         disposal_method: '',
-        compliance_notes: '',
         notes: '',
       });
       toast({

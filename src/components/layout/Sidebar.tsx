@@ -452,6 +452,13 @@ const Sidebar = () => {
                       isBlocked={isBlocked}
                     />
                     <NavItem
+                      to="/tasks"
+                      icon={ClipboardList}
+                      label="Tasks"
+                      collapsed={collapsed}
+                      isBlocked={isBlocked}
+                    />
+                    <NavItem
                       to="/environment"
                       icon={Thermometer}
                       label="Environment"

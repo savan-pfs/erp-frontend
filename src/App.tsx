@@ -15,7 +15,7 @@ import Genetics from "./pages/Genetics";
 import Batches from "./pages/Batches";
 import BatchDetail from "./pages/BatchDetail";
 import Plants from "./pages/Plants";
-// import Tasks from "./pages/Tasks";
+import Tasks from "./pages/Tasks";
 import Compliance from "./pages/Compliance";
 import MotherPlants from "./pages/MotherPlants";
 import Environment from "./pages/Environment";
@@ -97,6 +97,11 @@ const App = () => (
                 <Route path="/plants" element={
                   <ProtectedRoute requiredPermissions={['cultivation:view']} requiredRoles={['Cultivation Manager', 'Technician / Grower', 'Org Admin']}>
                     <Plants />
+                  </ProtectedRoute>
+                } />
+                <Route path="/tasks" element={
+                  <ProtectedRoute requiredPermissions={['cultivation:view']} requiredRoles={['Cultivation Manager', 'Technician / Grower', 'Org Admin']}>
+                    <Tasks />
                   </ProtectedRoute>
                 } />
                 <Route path="/environment" element={

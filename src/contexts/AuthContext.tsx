@@ -226,6 +226,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           full_name: `${response.user.firstName} ${response.user.lastName}`,
           role: response.user.role,
           organizationId: response.user.organizationId || response.organization?.id,
+          roleNames: response.user.roleNames || response.user.roles?.map((r: any) => r.name) || [],
+          roles: response.user.roles || [],
+          permissions: response.user.permissions || [],
         };
 
         const sessionData = { user: userData, token: response.token };
