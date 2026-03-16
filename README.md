@@ -1,57 +1,84 @@
-# ERP Frontend
+# Passion Farms ERP — Frontend
 
-Frontend application for the Passion Farms ERP system — a cultivation and operations management platform.
+Web app for the Passion Farms ERP system: cultivation and operations management (React + TypeScript + Vite).
 
 ## About This Project
 
-This is the web client for an enterprise resource planning (ERP) system built for cannabis cultivation and related operations. It provides:
+Frontend for the Passion Farms ERP:
 
-- **Dashboard & analytics** — Real-time stats, alerts, batches, compliance, and environment widgets
-- **Cultivation management** — Batches, plants, mother plants, rooms, facilities, feeding, harvest, and IPM
-- **Inventory & manufacturing** — Inventory tracking, waste management, quality control, and manufacturing workflows
-- **Compliance & audit** — Document verification, audit logs, SOPs, and compliance reporting
-- **Organization & access** — Multi-organization support, role-based permissions, team management, and user administration
-- **Integrations** — Supabase for auth and data, configurable API backend
-
-The app uses **React**, **TypeScript**, **Vite**, **Tailwind CSS**, and **shadcn/ui**, with Supabase for authentication and an optional REST API backend.
+- **Dashboard & analytics** — Stats, alerts, batches, compliance, environment widgets
+- **Cultivation** — Batches, plants, mother plants, rooms, facilities, feeding, harvest, IPM
+- **Inventory & manufacturing** — Inventory, waste, quality control, manufacturing
+- **Compliance & audit** — Document verification, audit logs, SOPs, reports
+- **Organization & access** — Multi-org, roles, permissions, team and user management
+- **Integrations** — Supabase (auth), configurable REST API backend
 
 ## Tech Stack
 
-- **Vite** — Build tool and dev server
-- **TypeScript** — Type-safe JavaScript
-- **React** — UI framework
+- **Vite** — Build and dev server
+- **React 18** + **TypeScript`**
 - **Tailwind CSS** — Styling
-- **shadcn/ui** — Component library
-- **Supabase** — Authentication and optional data layer
+- **shadcn/ui** (Radix) — UI components
+- **React Router** — Routing
+- **Supabase** — Authentication
+- **REST API** — Backend at `VITE_API_URL` (e.g. Passion Farms ERP backend)
+
+## Requirements
+
+- Node.js 18+
+- Backend API (e.g. [erp-backend](https://github.com/savan-pfs/erp-backend)) running for full functionality
 
 ## Getting Started
 
-**Requirements:** Node.js and npm (or [nvm](https://github.com/nvm-sh/nvm#installing-and-updating))
+1. **Clone and install**
+  ```bash
+   git clone https://github.com/savan-pfs/erp-frontend.git
+   cd erp-frontend
+   npm install
+  ```
+2. **Environment**
+  ```bash
+   cp .env.example .env
+   # Edit .env: Supabase keys and VITE_API_URL (e.g. http://localhost:3004/api for local backend)
+  ```
+3. **Run dev server**
+  ```bash
+   npm run dev
+  ```
 
-```sh
-# Clone the repository
-git clone https://github.com/savan-pfs/erp-frontend.git
-cd erp-frontend
+App runs at `http://localhost:5173` (or the port Vite shows). Point `VITE_API_URL` to your backend (e.g. `http://localhost:3004/api`) for local development.
 
-# Install dependencies
-npm install
+## Environment Variables
 
-# Copy environment template and add your values
-cp .env.example .env
 
-# Start the development server
-npm run dev
-```
+| Variable                        | Description          | Example                     |
+| ------------------------------- | -------------------- | --------------------------- |
+| `VITE_SUPABASE_PROJECT_ID`      | Supabase project ID  | *(from Supabase dashboard)* |
+| `VITE_SUPABASE_PUBLISHABLE_KEY` | Supabase anon key    | *(from Supabase dashboard)* |
+| `VITE_SUPABASE_URL`             | Supabase project URL | `https://xxx.supabase.co`   |
+| `VITE_API_URL`                  | Backend API base URL | `http://localhost:3004/api` |
 
-Configure `.env` with your Supabase project ID, URL, anon key, and API URL (see `.env.example`).
 
-## Repository
-
-**URL:** https://github.com/savan-pfs/erp-frontend
+All `VITE_`* variables are exposed to the client; do not put secrets in them.
 
 ## Scripts
 
-- `npm run dev` — Start dev server with hot reload
-- `npm run build` — Production build
-- `npm run preview` — Preview production build locally
-- `npm run lint` — Run ESLint
+
+| Command           | Description                      |
+| ----------------- | -------------------------------- |
+| `npm run dev`     | Start dev server (hot reload)    |
+| `npm run build`   | Production build                 |
+| `npm run preview` | Preview production build locally |
+| `npm run lint`    | Run ESLint                       |
+
+
+## Repository
+
+[https://github.com/savan-pfs/erp-frontend](https://github.com/savan-pfs/erp-frontend)
+
+## Local Full Stack
+
+1. Start backend: `cd erp-backend && npm run dev` (API at `http://localhost:3004`)
+2. Set frontend `.env`: `VITE_API_URL=http://localhost:3004/api`
+3. Start frontend: `cd erp-frontend && npm run dev` (app at `http://localhost:5173`)
+
